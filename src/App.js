@@ -1,9 +1,11 @@
+import React from 'react';
 import './App.css';
+import Checker from './auth/Checker';
 
 function App() {
   return (
     <div>
-      Hello
+      <Checker />
     </div>
   );
 }
