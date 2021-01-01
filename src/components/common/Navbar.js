@@ -25,6 +25,7 @@ const Navbar = () => {
                     <Link className="nav-item nav-link" to='/'>About Us</Link>
                     <Link className="nav-item nav-link" to='/'>Contact</Link>
                     {state && <Link className="nav-item nav-link" to='/' onClick={logout}>Logout</Link>}
+                    {state === null && <Link className="nav-item nav-link" to='/buyer/login'>Login</Link>}
                 </div>
             </div>
         </nav>

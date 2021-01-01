@@ -10,12 +10,6 @@ const MainNavigation = () => {
     const { state, dispatch } = useContext(UserContext)
     const history = useHistory()
 
-    const logout = () => {
-        dispatch({ type: 'USER', payload: null })
-        localStorage.removeItem('USER')
-        history.push('/buyer/login')
-    }
-
     useEffect(() => {
         if (state == null) {
             const user = JSON.parse(localStorage.getItem('USER'))
@@ -32,7 +26,7 @@ const MainNavigation = () => {
                 }
             }
             else {
-                history.push('/buyer/login')
+                history.push('/buyer')
             }
         }
     }, [dispatch, state, history])
