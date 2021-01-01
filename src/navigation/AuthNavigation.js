@@ -1,16 +1,18 @@
 import React from 'react'
-import { Route, BrowserRouter as Router, Switch } from 'react-router-dom';
-import UserLogin from '../auth/user/UserLogin';
-import UserSignup from '../auth/user/UserSignup';
+import { Route } from 'react-router-dom';
+import SellerLogin from '../auth/seller/SellerLogin';
+import SellerSignup from '../auth/seller/SellerSignup';
+import BuyerLogin from '../auth/user/BuyerLogin';
+import BuyerSignup from '../auth/user/BuyerSignup';
 
 const AuthNavigation = () => {
     return (
-        <Router>
-            <Switch>
-                <Route exact path='/' component={UserLogin}></Route>
-                <Route exact path='/user/signup' component={UserSignup}></Route>
-            </Switch>
-        </Router>
+        <>
+            <Route exact path='/' component={BuyerLogin}></Route>
+            <Route exact path='/user/signup' component={BuyerSignup}></Route>
+            <Route exact path='/seller/signup' component={SellerSignup}></Route>
+            <Route exact path='/seller/login' component={SellerLogin}></Route>
+        </>
     )
 }
 

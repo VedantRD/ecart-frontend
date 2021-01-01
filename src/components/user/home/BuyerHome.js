@@ -1,11 +1,11 @@
 import React from 'react'
 
-const Homepage = () => {
+const BuyerHome = () => {
     return (
         <div>
-            User Homepage
+            Buyer Homepage
         </div>
     )
 }
 
-export default Homepage
+export default BuyerHome

@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom'
+import React, { useState, useContext } from 'react';
+import { Link, useHistory } from 'react-router-dom'
 import axios from 'axios'
 import { config } from '../../config';
+import { UserContext } from '../../App';
 
-const UserLogin = () => {
-    // const { state, dispatch } = useContext(UserContext)
+const BuyerLogin = () => {
+    const { dispatch } = useContext(UserContext)
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const url = config.url
@@ -21,11 +22,12 @@ const UserLogin = () => {
                 email: email,
                 password: password
             }).then((res) => {
+                res.data.user.type = 'buyer'
                 if (res.data.status === 'success') {
-                    // dispatch({ type: 'USER', payload: JSON.stringify(res.data.user) })
-                    // localStorage.setItem('USER', JSON.stringify(res.data.user))
+                    dispatch({ type: 'USER', payload: res.data.user })
+                    localStorage.setItem('USER', JSON.stringify(res.data.user))
                     alert('logged in succesfully')
-                    history.push('/loading')
+                    history.push('/user/home')
                 } else {
                     alert(res.data.message)
                 }
@@ -55,8 +57,10 @@ const UserLogin = () => {
                 </div>
                 <button type="submit" className="btn btn-primary">Submit</button>
             </form>
+            <Link to='/user/signup'>Goto user register</Link>
+            <Link to='/seller/login'>Goto seller login</Link>
         </div>
     )
 }
 
-export default UserLogin
+export default BuyerLogin
