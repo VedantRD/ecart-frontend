@@ -18,7 +18,7 @@ const BuyerLogin = () => {
         if (email === "" || password === "") {
             alert("All fields required")
         } else {
-            axios.post(`${url}/user/signin`, {
+            axios.post(`${url}/buyer/signin`, {
                 email: email,
                 password: password
             }).then((res) => {
@@ -27,7 +27,7 @@ const BuyerLogin = () => {
                     dispatch({ type: 'USER', payload: res.data.user })
                     localStorage.setItem('USER', JSON.stringify(res.data.user))
                     alert('logged in succesfully')
-                    history.push('/user/home')
+                    history.push('/buyer')
                 } else {
                     alert(res.data.message)
                 }
@@ -57,8 +57,9 @@ const BuyerLogin = () => {
                 </div>
                 <button type="submit" className="btn btn-primary">Submit</button>
             </form>
-            <Link to='/user/signup'>Goto user register</Link>
+            <Link to='/buyer/signup'>Goto user register</Link>
             <Link to='/seller/login'>Goto seller login</Link>
+            <Link to='/seller/signup'>Goto seller register</Link>
         </div>
     )
 }

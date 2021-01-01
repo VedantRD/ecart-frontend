@@ -1,12 +1,12 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
-import BuyerHome from '../components/user/home/BuyerHome';
+import BuyerHome from '../components/buyer/home/BuyerHome';
 
 const BuyerNavigation = () => {
 
     return (
         <>
-            <Route exact path='/user/home' component={BuyerHome}></Route>
+            <Route exact path='/buyer' component={BuyerHome}></Route>
         </>
     )
 }

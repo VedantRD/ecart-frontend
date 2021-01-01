@@ -4,10 +4,17 @@ import AuthNavigation from './AuthNavigation';
 import SellerNavigation from './SellerNavigation';
 import BuyerNavigation from './BuyerNavigation';
 import { UserContext } from '../App';
+import Navbar from '../components/common/Navbar';
 
 const MainNavigation = () => {
     const { state, dispatch } = useContext(UserContext)
     const history = useHistory()
+
+    const logout = () => {
+        dispatch({ type: 'USER', payload: null })
+        localStorage.removeItem('USER')
+        history.push('/buyer/login')
+    }
 
     useEffect(() => {
         if (state == null) {
@@ -16,7 +23,7 @@ const MainNavigation = () => {
             if (user) {
                 dispatch({ type: 'USER', payload: user })
                 if (user.type === 'buyer') {
-                    history.push('/user/home')
+                    history.push('/buyer')
                     console.log('you are buyer')
                 }
                 else if (user.type === 'seller') {
@@ -24,15 +31,21 @@ const MainNavigation = () => {
                     history.push('/seller')
                 }
             }
+            else {
+                history.push('/buyer/login')
+            }
         }
     }, [dispatch, state, history])
 
     return (
-        <Switch>
-            {state === null && <AuthNavigation />}
-            {state && state.type === 'buyer' && <BuyerNavigation />}
-            {state && state.type === 'seller' && <SellerNavigation />}
-        </Switch>
+        <>
+            <Navbar />
+            <Switch>
+                {state === null && <AuthNavigation />}
+                {state && state.type === 'buyer' && <BuyerNavigation />}
+                {state && state.type === 'seller' && <SellerNavigation />}
+            </Switch>
+        </>
     )
 }
 

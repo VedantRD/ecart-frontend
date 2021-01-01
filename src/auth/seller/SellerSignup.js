@@ -5,7 +5,7 @@ import { Link, useHistory } from 'react-router-dom';
 import { UserContext } from '../../App';
 
 const SellerSignup = () => {
-    const history = useHistory
+    const history = useHistory()
     const { dispatch } = useContext(UserContext)
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
@@ -70,7 +70,7 @@ const SellerSignup = () => {
                 <div className="form-group">
                     <label htmlFor="uInputMobile">Mobile Number</label>
                     <input className="form-control"
-                        id="uInputMobileNo"
+                        id="sInputMobileNo"
                         placeholder="Enter Mobile Number" value={mobileNo}
                         onChange={(e) => setMobileNo(e.target.value)}
                     />

@@ -1,10 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import axios from 'axios'
 import { config } from '../../config';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
+import { UserContext } from '../../App';
 
 const BuyerSignup = () => {
-
+    const { dispatch } = useContext(UserContext)
+    const history = useHistory()
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -18,7 +20,7 @@ const BuyerSignup = () => {
             setPassword("")
             setConfirmPassword("")
         } else {
-            axios.post(`${url}/user/signup`, {
+            axios.post(`${url}/buyer/signup`, {
                 name: name,
                 email: email,
                 password: password
@@ -26,6 +28,10 @@ const BuyerSignup = () => {
                 .then((res) => {
                     if (res.data.status === 'success') {
                         alert(res.data.message)
+                        res.data.user.type = 'buyer'
+                        dispatch({ type: 'USER', payload: res.data.user })
+                        localStorage.setItem('USER', JSON.stringify(res.data.user))
+                        history.push('/buyer')
                     } else {
                         alert(res.data.message)
                     }
@@ -72,7 +78,7 @@ const BuyerSignup = () => {
                 </div>
                 <button type="submit" className="btn btn-primary">Submit</button>
             </form>
-            <Link to='/'>Goto user login</Link>
+            <Link to='/buyer/login'>Goto user login</Link>
         </>
     )
 }
