@@ -1,11 +1,13 @@
 import React, { useEffect, useContext } from 'react';
-import { Switch, useHistory } from 'react-router-dom';
+import { Route, Switch, useHistory } from 'react-router-dom';
 import AuthNavigation from './AuthNavigation';
 import SellerNavigation from './SellerNavigation';
 import BuyerNavigation from './BuyerNavigation';
 import { UserContext } from '../App';
 import Navbar from '../components/common/Navbar';
 import { Wrapper } from '../styles/layout/layout';
+import Contact from '../components/common/Contact';
+import About from '../components/common/About';
 
 const MainNavigation = () => {
     const { state, dispatch } = useContext(UserContext)
@@ -37,8 +39,17 @@ const MainNavigation = () => {
             <Navbar />
             <Wrapper>
                 <Switch>
+                    {/* common routes */}
+                    <Route exact path='/contact' component={Contact} />
+                    <Route exact path='/about' component={About} />
+
+                    {/* auth routes */}
                     {state === null && <AuthNavigation />}
+
+                    {/* buyer routes */}
                     {state && state.type === 'buyer' && <BuyerNavigation />}
+
+                    {/* seller routes */}
                     {state && state.type === 'seller' && <SellerNavigation />}
                 </Switch>
             </Wrapper>

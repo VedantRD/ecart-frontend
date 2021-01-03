@@ -36,9 +36,15 @@ const Navbar = () => {
                     <div className="navbar-nav w-100">
 
                         {/* links */}
-                        <Link className="nav-item nav-link ml-md-5" to={homeRoute}>Home</Link>
-                        <Link className="nav-item nav-link ml-md-3" to='/'>About Us</Link>
-                        <Link className="nav-item nav-link ml-md-3" to='/'>Contact</Link>
+                        <Link className="nav-item nav-link ml-md-5 text-light" to={homeRoute}>
+                            HOME
+                        </Link>
+                        <Link className="nav-item nav-link ml-md-3 text-light" to='/about'>
+                            ABOUT US
+                        </Link>
+                        <Link className="nav-item nav-link ml-md-3 text-light" to='/contact'>
+                            CONTACT
+                        </Link>
 
                         {/* searchbar */}
                         <Searchbar />
