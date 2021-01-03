@@ -38,29 +38,55 @@ const BuyerLogin = () => {
     }
 
     return (
-        <div>
-            <form onSubmit={(e) => login(e)}>
-                <div className="form-group">
-                    <label htmlFor="uInputEmail">Email address</label>
-                    <input type="email" className="form-control"
-                        id="uInputEmail" aria-describedby="emailHelp"
-                        placeholder="Enter email" value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                    />
+        <div className='row no-gutters h-100 align-items-center py-4'>
+            <div className='col-12 col-md-6 col-padder'>
+                <div className='card no-border-sm card-shadow-2'>
+                    <div className='card-body'>
+                        <form onSubmit={(e) => login(e)}>
+                            <h1 className='text-center mb-5 mt-2'>Login</h1>
+                            <div className="form-group">
+                                <label htmlFor="uInputEmail">Email</label>
+                                <input type="email" className="form-control"
+                                    id="uInputEmail" aria-describedby="emailHelp"
+                                    placeholder="Enter email" value={email}
+                                    onChange={(e) => setEmail(e.target.value)}
+                                />
+                            </div>
+                            <div className="form-group">
+                                <label htmlFor="uInputPassword">Password</label>
+                                <input type="password" className="form-control"
+                                    id="uInputPassword" placeholder="Enter password" value={password}
+                                    onChange={(e) => setPassword(e.target.value)}
+                                />
+                            </div>
+                            <div className='d-flex justify-content-center'>
+                                <button type="submit" className="btn btn-primary w-75 mt-5 my-md-5">
+                                    Login
+                                </button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
-                <div className="form-group">
-                    <label htmlFor="uInputPassword">Password</label>
-                    <input type="password" className="form-control"
-                        id="uInputPassword" placeholder="Password" value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                    />
+            </div>
+            <div className='col-12 col-md-6 col-padder-right'>
+                <p className='text-center'>New User ?</p>
+                <div className='d-flex justify-content-center'>
+                    <Link to='/buyer/signup'><u className='h4'>Register Here</u></Link>
                 </div>
-                <button type="submit" className="btn btn-primary">Submit</button>
-            </form>
-            <Link to='/buyer/signup'>Goto user register</Link>
-            <Link to='/seller/login'>Goto seller login</Link>
-            <Link to='/seller/signup'>Goto seller register</Link>
-        </div>
+                <h5 className='text-center type-through'>
+                    <span>OR</span>
+                </h5>
+                <p className='my-4 text-center'>Want to sell your products ?</p>
+                <div className='row'>
+                    <div className='col'>
+                        <Link to='/seller/login' className='btn btn-primary d-block w-100'>Seller Login</Link>
+                    </div>
+                    <div className='col'>
+                        <Link to='/seller/signup' className='btn btn-primary d-block w-100'>Seller Register</Link>
+                    </div>
+                </div>
+            </div>
+        </div >
     )
 }
 

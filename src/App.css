@@ -1,0 +1,10 @@
+@import './styles//auth/auth.css';
+@import './styles/common/card.css';
+@import './styles/common/text.css';
+html, body {
+    height: 100% !important;
+}
+
+#root {
+    height: 100vh !important;
+}

@@ -1,0 +1,23 @@
+.col-padder {
+    padding-left: 10% !important;
+    padding-right: 10% !important;
+    border-right: 1px solid rgb(204, 203, 203) !important;
+}
+
+.col-padder-right {
+    padding-left: 10% !important;
+    padding-right: 10% !important;
+}
+
+@media only screen and (max-width: 700px) {
+    .col-padder {
+        padding-left: 0% !important;
+        padding-right: 0% !important;
+        padding: 0 !important;
+        border: 0 !important;
+    }
+    .col-padder-right {
+        padding-left: 5% !important;
+        padding-right: 5% !important;
+    }
+}

@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react'
-import { Link, useHistory } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 import axios from 'axios'
 import { config } from '../../config';
 import { UserContext } from '../../App';
@@ -39,26 +39,36 @@ const SellerLogin = () => {
     }
 
     return (
-        <div>
-            <form onSubmit={(e) => login(e)}>
-                <div className="form-group">
-                    <label htmlFor="uInputEmail">Email address</label>
-                    <input type="email" className="form-control"
-                        id="uInputEmail" aria-describedby="emailHelp"
-                        placeholder="Enter email" value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                    />
+        <div className='row no-gutters justify-content-center align-items-center h-100'>
+            <div className='col-12 col-md-6 col-lg-4'>
+                <div className='card no-border-sm card-shadow-2'>
+                    <div className='card-body'>
+                        <form onSubmit={(e) => login(e)}>
+                            <h1 className='text-center mb-4 mt-2'>Seller Login</h1>
+                            <div className="form-group">
+                                <label htmlFor="uInputEmail">Email</label>
+                                <input type="email" className="form-control"
+                                    id="uInputEmail" aria-describedby="emailHelp"
+                                    placeholder="Enter email" value={email}
+                                    onChange={(e) => setEmail(e.target.value)}
+                                />
+                            </div>
+                            <div className="form-group">
+                                <label htmlFor="uInputPassword">Password</label>
+                                <input type="password" className="form-control"
+                                    id="uInputPassword" placeholder="Enter password" value={password}
+                                    onChange={(e) => setPassword(e.target.value)}
+                                />
+                            </div>
+                            <div className='d-flex justify-content-center'>
+                                <button type="submit" className="btn btn-primary w-75 mt-5 mb-4">
+                                    Login
+                                </button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
-                <div className="form-group">
-                    <label htmlFor="uInputPassword">Password</label>
-                    <input type="password" className="form-control"
-                        id="uInputPassword" placeholder="Password" value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                    />
-                </div>
-                <button type="submit" className="btn btn-primary">Submit</button>
-            </form>
-            <Link to='/seller/signup'>Goto seller register</Link>
+            </div>
         </div>
     )
 }

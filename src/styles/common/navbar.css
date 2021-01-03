@@ -1,0 +1,9 @@
+.myNavbar {
+    min-height: 7vh !important;
+}
+
+@media only screen and (max-width: 600px) {
+    .myNavbar {
+        max-height: 500px !important;
+    }
+}

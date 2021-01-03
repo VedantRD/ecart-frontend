@@ -5,6 +5,7 @@ import SellerNavigation from './SellerNavigation';
 import BuyerNavigation from './BuyerNavigation';
 import { UserContext } from '../App';
 import Navbar from '../components/common/Navbar';
+import { Wrapper } from '../styles/layout/layout';
 
 const MainNavigation = () => {
     const { state, dispatch } = useContext(UserContext)
@@ -32,14 +33,16 @@ const MainNavigation = () => {
     }, [dispatch, state, history])
 
     return (
-        <>
+        <div>
             <Navbar />
-            <Switch>
-                {state === null && <AuthNavigation />}
-                {state && state.type === 'buyer' && <BuyerNavigation />}
-                {state && state.type === 'seller' && <SellerNavigation />}
-            </Switch>
-        </>
+            <Wrapper>
+                <Switch>
+                    {state === null && <AuthNavigation />}
+                    {state && state.type === 'buyer' && <BuyerNavigation />}
+                    {state && state.type === 'seller' && <SellerNavigation />}
+                </Switch>
+            </Wrapper>
+        </div>
     )
 }
 
