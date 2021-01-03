@@ -1,0 +1,11 @@
+.mySearchbar {
+    width: 50%;
+    padding-right: 5%;
+}
+
+@media only screen and (max-width: 700px) {
+    .mySearchbar {
+        padding-right: 0;
+        width: 100%;
+    }
+}
