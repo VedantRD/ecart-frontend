@@ -5,6 +5,7 @@ import SellerSignup from '../auth/seller/SellerSignup';
 import BuyerLogin from '../auth/buyer/BuyerLogin';
 import BuyerSignup from '../auth/buyer/BuyerSignup';
 import BuyerHome from '../components/buyer/home/BuyerHome';
+import ProductDescription from '../components/common/products/ProductDescription';
 
 const AuthNavigation = () => {
     return (
@@ -14,6 +15,7 @@ const AuthNavigation = () => {
             <Route exact path='/seller/login' component={SellerLogin}></Route>
             <Route exact path='/seller/signup' component={SellerSignup}></Route>
             <Route exact path='/buyer' component={BuyerHome}></Route>
+            <Route exact path='/buyer/products/id' component={ProductDescription}></Route>
         </>
     )
 }

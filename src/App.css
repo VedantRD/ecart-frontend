@@ -2,6 +2,7 @@
 @import './styles/common/card.css';
 @import './styles/common/text.css';
 @import './styles/common/button.css';
+@import './styles/common/loading.css';
 html, body {
     height: 100% !important;
 }

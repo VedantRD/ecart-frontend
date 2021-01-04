@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const Wrapper = styled.div`
-    height:93vh;
+    min-height:93vh;
     padding:1rem;
     background-color:#F8F8F8;
     @media only screen and (max-width: 700px) {
