@@ -8,6 +8,7 @@ import Navbar from '../components/common/Navbar';
 import { Wrapper } from '../styles/layout/layout';
 import Contact from '../components/common/Contact';
 import About from '../components/common/About';
+import NotFound from '../components/common/utils/NotFound';
 
 const MainNavigation = () => {
     const { state, dispatch } = useContext(UserContext)
@@ -51,6 +52,9 @@ const MainNavigation = () => {
 
                     {/* seller routes */}
                     {state && state.type === 'seller' && <SellerNavigation />}
+
+                    {/* handle not found page */}
+                    <Route component={NotFound}></Route>
                 </Switch>
             </Wrapper>
         </div>

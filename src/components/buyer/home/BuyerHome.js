@@ -1,14 +1,14 @@
 import React, { useContext, useState, useEffect } from 'react'
 import { UserContext } from '../../../App'
-import ProductCard from '../../common/products/ProductCard'
+import ProductCard from '../../common/product/ProductCard'
 import axios from 'axios'
-import Loading from '../../common/Loading'
+import Loading from '../../common/utils/Loading'
+import Carousel from '../../common/utils/Carousel'
 
 const BuyerHome = () => {
 
     const { state } = useContext(UserContext)
-    const phones = ['Samsung Galaxy S21', 'Nokia 9.1', 'iPhone 11 Pro', 'Motorola One Power', 'Realme X3', 'Redmi Note 15 Pro', 'POCO M4']
-
+    // const phones = ['Samsung Galaxy S21', 'Nokia 9.1', 'iPhone 11 Pro', 'Motorola One Power', 'Realme X3', 'Redmi Note 15 Pro', 'POCO M4']
     const [products, setProducts] = useState([])
     const [loading, setLoading] = useState(true)
 
@@ -38,6 +38,11 @@ const BuyerHome = () => {
         !loading ?
             <div className='row no-gutters h-100 align-items-center justify-content-center px-lg-5'>
                 <div className='col'>
+                    <div className='row no-gutters mb-3'>
+                        <div className='col'>
+                            <Carousel />
+                        </div>
+                    </div>
                     <div className='row'>
                         {products.map((product, ind) => {
                             return (

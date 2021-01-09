@@ -1,0 +1,9 @@
+.gutter_col {
+    padding-right: 7.5px;
+    padding-left: 7.5px;
+}
+
+.gutter_col_row {
+    margin-left: -7.5px;
+    margin-right: -7.5px;
+}

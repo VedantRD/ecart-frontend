@@ -3,8 +3,18 @@
 @import './styles/common/text.css';
 @import './styles/common/button.css';
 @import './styles/common/loading.css';
+@import './styles/common/carousel.css';
+@import './styles/common/common.css';
+@import './styles/common/gutter.css';
+/* my font */
+
+@import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
+/* Global Style */
+
 html, body {
     height: 100% !important;
+    /* font-size: 0.97rem; */
+    font-family: 'Nunito', sans-serif;
 }
 
 #root {

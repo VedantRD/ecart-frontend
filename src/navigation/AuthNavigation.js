@@ -5,7 +5,7 @@ import SellerSignup from '../auth/seller/SellerSignup';
 import BuyerLogin from '../auth/buyer/BuyerLogin';
 import BuyerSignup from '../auth/buyer/BuyerSignup';
 import BuyerHome from '../components/buyer/home/BuyerHome';
-import ProductDescription from '../components/common/products/ProductDescription';
+import ProductDescription from '../components/common/product/ProductDescription';
 
 const AuthNavigation = () => {
     return (

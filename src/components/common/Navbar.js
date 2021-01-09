@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import { Link, useHistory } from 'react-router-dom'
 import { UserContext } from '../../App';
 import '../../styles/common/navbar.css'
-import Searchbar from './Searchbar';
+import Searchbar from './utils/Searchbar';
 
 const Navbar = () => {
 
@@ -19,10 +19,10 @@ const Navbar = () => {
 
     return (
         <div className='myNavbar'>
-            <nav className="navbar navbar-expand-lg navbar-dark bg-primary fixed-top px-md-5 px-3">
+            <nav className="navbar navbar-expand-lg navbar-dark bg-primary fixed-top px-md-4 px-3">
 
                 {/* logo */}
-                <Link className="navbar-brand" to={homeRoute}>Navbar</Link>
+                <Link className="navbar-brand font-weight-bold" to={homeRoute}>E-Cart</Link>
 
                 {/* collapsible button */}
                 <button className="navbar-toggler" type="button"
@@ -39,6 +39,9 @@ const Navbar = () => {
                         <Link className="nav-item nav-link ml-md-5 text-light" to={homeRoute}>
                             HOME
                         </Link>
+                        <Link className="nav-item nav-link ml-md-3 text-light" to={state && state.type === 'seller' ? '/seller/products' : '/buyer/products'}>
+                            PRODUCTS
+                        </Link>
                         <Link className="nav-item nav-link ml-md-3 text-light" to='/about'>
                             ABOUT US
                         </Link>
@@ -51,17 +54,26 @@ const Navbar = () => {
 
                         {/* login & logout */}
                         {state &&
-                            <Link
-                                className="nav-item nav-link py-0 mt-md-0 mt-3 px-0"
-                                to='/' onClick={logout}
-                            >
-                                <button className='btn btn-danger px-5 btn-shadow-1'>
-                                    Logout
-                                </button>
-                            </Link>
+                            <span className='ml-auto'>
+                                {state.type === 'buyer' &&
+                                    <Link className="nav-item nav-link py-0 mt-md-0 mt-3 px-0" to='/buyer/cart'>
+                                        <button className='btn btn-info px-5'>
+                                            <i className='fa fa-shopping-cart'></i>
+                                        </button>
+                                    </Link>
+                                }
+                                <Link
+                                    className="nav-item nav-link py-0 mt-md-0 mt-3 px-0 ml-md-4"
+                                    to='/' onClick={logout}
+                                >
+                                    <button className='btn btn-danger px-4'>
+                                        Logout
+                                    </button>
+                                </Link>
+                            </span>
                         }
                         {state === null &&
-                            <Link className="nav-item nav-link py-0 mt-md-0 mt-3 px-0"
+                            <Link className="nav-item nav-link py-0 mt-md-0 mt-3 px-0 ml-auto"
                                 to='/buyer/login'
                             >
                                 <button className='btn btn-success px-5 rounded-0 btn-shadow-1'>
