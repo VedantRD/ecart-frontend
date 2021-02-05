@@ -1,15 +1,47 @@
-import React from 'react'
+import React, { useEffect, useState, useContext } from 'react'
 import { Link } from 'react-router-dom'
+import { UserContext } from '../../../App'
+import axios from 'axios'
+import { config } from '../../../config'
 
 const ProductCard = ({ product }) => {
 
-    const title = product.title.length < 26 ? product.title : product.title.slice(0, 26) + '...'
+    const title = product.name.length < 26 ? product.name : product.name.slice(0, 26) + '...'
+    const { state } = useContext(UserContext)
+    const [loading, setLoading] = useState(true)
+
+    const addToCart = () => {
+        let unmounted = false;
+        axios.get(`${config.url}/buyer/${state._id}/cart`)
+            .then(res => {
+                if (!unmounted) {
+                    console.log(res.data)
+                    setLoading(false)
+                    if (res.data.status === 'success') {
+                        const cartItems = [...res.data.cart.items, { product: product._id }]
+                        const cartId = res.data.cart._id
+                        axios.post(`${config.url}/buyer/cart/update`, { _id: cartId, items: cartItems })
+                            .then(newRes => {
+                                console.log(newRes)
+                            })
+                            .catch(err => { console.log(err) })
+                    }
+                }
+            })
+            .catch(err => {
+                if (!unmounted) {
+                    console.log(err)
+                }
+            })
+        // cleanup function
+        return () => { unmounted = true }
+    }
 
     return (
         // <Link to='/buyer/products/id' className='text-dark' style={{ textDecoration: 'none' }}>
         <div className="card no-border-sm" style={{ height: 380 }}>
             <img
-                className="card-img-top img-fluid px-3 pt-2"
+                className="card-img-top img-fluid"
                 src={product.image} alt="phone img"
                 style={{ height: 250 }}
             />
@@ -28,18 +60,18 @@ const ProductCard = ({ product }) => {
                 </div>
                 <div className='row no-gutters mt-3'>
                     <div className='col pr-2'>
-                        <Link to='/buyer/products/id'>
+                        <Link to={{ pathname: `/buyer/products/${product._id}`, product }}>
                             <button className='btn btn-primary w-100 py-1'>
                                 Buy Now
                             </button>
                         </Link>
                     </div>
                     <div className='col pl-2'>
-                        <Link to='/buyer/cart'>
-                            <button className='btn btn-primary w-100 py-1'>
-                                Add to cart <i className='fa fa-shopping-cart'></i>
-                            </button>
-                        </Link>
+                        {/* <Link to='/buyer/cart'> */}
+                        <button className='btn btn-primary w-100 py-1' onClick={addToCart}>
+                            Add to cart <i className='fa fa-shopping-cart'></i>
+                        </button>
+                        {/* </Link> */}
                     </div>
                 </div>
             </div>

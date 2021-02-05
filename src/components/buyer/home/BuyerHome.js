@@ -4,24 +4,24 @@ import ProductCard from '../../common/product/ProductCard'
 import axios from 'axios'
 import Loading from '../../common/utils/Loading'
 import Carousel from '../../common/utils/Carousel'
+import { config } from '../../../config'
 
 const BuyerHome = () => {
 
     const { state } = useContext(UserContext)
-    // const phones = ['Samsung Galaxy S21', 'Nokia 9.1', 'iPhone 11 Pro', 'Motorola One Power', 'Realme X3', 'Redmi Note 15 Pro', 'POCO M4']
     const [products, setProducts] = useState([])
     const [loading, setLoading] = useState(true)
 
     // get all products
     useEffect(() => {
         let unmounted = false;
-        axios.get('https://fakestoreapi.com/products')
+        axios.get(`${config.url}/buyer/products`)
             .then(res => {
                 if (!unmounted) {
-                    console.log(res.data)
+                    console.log(res.data.products)
                     setLoading(false)
-                    if (res.data.length) {
-                        setProducts(res.data)
+                    if (res.data.status === 'success') {
+                        setProducts(res.data.products)
                     }
                 }
             })

@@ -36,32 +36,34 @@ const SellerProducts = () => {
 
     return (
         !loading ?
-            <div className='row'>
-                <div className='col-12 text-right pr-4 pt-3'>
+            <>
+                {/* <div className='row'> */}
+                <div className='col-12 text-right pr-md-3 pt-md-3 pt-0'>
                     <Link to='/seller/addproduct'>
                         <button className='btn btn-primary'>
-                            Add New Product<i className='fa fa-plus ml-2'></i>
+                            Add New Product
                         </button>
                     </Link>
                 </div>
-                <div className='col-12'>
+                <div className='col-12 px-0'>
                     <h5 className='text-muted text-center mt-4'>
                         Your Products
                     </h5>
                     <div className='px-5 mb-4'>
                         <hr className=''></hr>
                     </div>
-                    <div className='row'>
+                    <div className='row no-gutters'>
                         {products.map(product => {
                             return (
-                                <div className='col-6' key={product._id}>
+                                <div className='col-12 col-md-6 mb-3 mb-md-0 px-0 px-md-1' key={product._id}>
                                     <RenderGrid product={product} />
                                 </div>
                             )
                         })}
                     </div>
                 </div>
-            </div>
+                {/* </div> */}
+            </>
             :
             <Loading />
     )

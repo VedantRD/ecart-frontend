@@ -54,7 +54,7 @@ const Navbar = () => {
 
                         {/* login & logout */}
                         {state &&
-                            <span className='ml-auto'>
+                            <>
                                 {state.type === 'buyer' &&
                                     <Link className="nav-item nav-link py-0 mt-md-0 mt-3 px-0" to='/buyer/cart'>
                                         <button className='btn btn-info px-5'>
@@ -63,17 +63,17 @@ const Navbar = () => {
                                     </Link>
                                 }
                                 <Link
-                                    className="nav-item nav-link py-0 mt-md-0 mt-3 px-0 ml-md-4"
+                                    className="nav-item nav-link py-0 mt-md-0 mt-3 px-0 ml-3"
                                     to='/' onClick={logout}
                                 >
                                     <button className='btn btn-danger px-4'>
                                         Logout
                                     </button>
                                 </Link>
-                            </span>
+                            </>
                         }
                         {state === null &&
-                            <Link className="nav-item nav-link py-0 mt-md-0 mt-3 px-0 ml-auto"
+                            <Link className="nav-item nav-link py-0 mt-md-0 mt-3 px-0 ml-md-auto"
                                 to='/buyer/login'
                             >
                                 <button className='btn btn-success px-5 rounded-0 btn-shadow-1'>

@@ -10,7 +10,7 @@ const AddProduct = () => {
     const history = useHistory()
     const [name, setName] = useState('')
     const [description, setDescription] = useState('')
-    const [highlights, setHighlights] = useState([])
+    const [highlights, setHighlights] = useState('Latest, New')
     const [price, setPrice] = useState('')
     const [discount, setDiscount] = useState(0)
     const [quantity, setQuantity] = useState(1)
@@ -37,19 +37,22 @@ const AddProduct = () => {
                 if (res.data.status === 'success') {
                     history.push('/seller/products')
                 }
+                else {
+                    alert(res.data.message)
+                }
             })
             .catch(err => { console.log(err) })
     }
 
     return (
-        <div className='row h-100 justify-content-center align-items-center'>
+        <div className='row h-100 justify-content-center align-items-center no-gutters'>
             <div className='col px-md-5'>
-                <div className='card card-shadow-2'>
+                <div className='card card-shadow-2 no-border-sm'>
                     <div className='card-body'>
                         <h3 className='card-title mb-4'>Add New Product</h3>
                         <div className='row h-100 justify-content-center align-items-center'>
                             {/* <h5 className='text-muted text-center mt-4'>Add your new product here.</h5> */}
-                            <div className='col-8'>
+                            <div className='col-12 col-md-8'>
                                 <form>
                                     <div className="form-group">
                                         <label>Product Name</label>
@@ -97,7 +100,7 @@ const AddProduct = () => {
                                     </div>
                                 </form>
                             </div>
-                            <div className='col-4 text-center justify-content-center p-0'>
+                            <div className='col-12 col-md-4 text-center justify-content-center p-0'>
                                 <label htmlFor="upload-button" className=''>
                                     {image ?
                                         <>

@@ -35,6 +35,9 @@ const EditProduct = () => {
         axios.post(`${config.url}/seller/updateproduct`, { newProduct, _id: product._id })
             .then(res => {
                 console.log(res)
+                if (res.data.status === 'success') {
+                    alert(res.data.message)
+                }
             })
             .catch(err => { console.log(err) })
     }
@@ -51,22 +54,22 @@ const EditProduct = () => {
     }
 
     return (
-        <div className='row h-100 justify-content-center align-items-center'>
+        <div className='row h-100 justify-content-center align-items-center no-gutters'>
             <div className='col px-md-5'>
-                <div className='card card-shadow-2'>
-                    <div className='card-body'>
+                <div className='card card-shadow-2 no-border-sm'>
+                    <div className='card-body pt-1 pt-md-3'>
                         <div className='row justify-content-between align-items-center mb-4'>
-                            <div className='col'>
+                            <div className='col-12 col-md-6'>
                                 <h3 className='card-title my-0'>Update Product Information</h3>
                             </div>
-                            <div className='col text-right'>
-                                <button className="btn btn-danger w-25" onClick={deleteProduct}>
+                            <div className='col text-right mt-3 mt-md-0'>
+                                <button className="btn btn-outline-danger" onClick={deleteProduct}>
                                     Delete Product
                                 </button>
                             </div>
                         </div>
                         <div className='row h-100 justify-content-center align-items-center'>
-                            <div className='col-8'>
+                            <div className='col-12 col-md-8'>
                                 <form>
                                     <div className="form-group">
                                         <label>Product Name</label>
@@ -114,7 +117,7 @@ const EditProduct = () => {
                                     </div>
                                 </form>
                             </div>
-                            <div className='col-4 text-center justify-content-center p-0'>
+                            <div className='col-12 col-md-4 text-center justify-content-center p-0'>
                                 <label htmlFor="upload-button" className=''>
                                     {image ?
                                         <>

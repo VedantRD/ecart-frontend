@@ -13,10 +13,16 @@
 
 html, body {
     height: 100% !important;
-    /* font-size: 0.97rem; */
+    font-size: 0.99rem;
     font-family: 'Nunito', sans-serif;
 }
 
 #root {
     height: 100vh !important;
+}
+
+@media only screen and (max-width: 700px) {
+    html, body {
+        font-size: 0.95rem;
+    }
 }

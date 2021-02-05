@@ -10,7 +10,7 @@
 @media only screen and (max-width: 700px) {
     .myNavbar {
         max-height: 500px !important;
-        padding-left: 1rem !important;
-        padding-right: 1rem !important;
+        /* padding-left: 1rem !important; */
+        /* padding-right: 1rem !important; */
     }
 }
