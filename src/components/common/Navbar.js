@@ -63,7 +63,7 @@ const Navbar = () => {
                                     </Link>
                                 }
                                 <Link
-                                    className="nav-item nav-link py-0 mt-md-0 mt-3 px-0 ml-3"
+                                    className="nav-item nav-link py-0 mt-md-0 mt-3 px-0 ml-md-3"
                                     to='/' onClick={logout}
                                 >
                                     <button className='btn btn-danger px-4'>

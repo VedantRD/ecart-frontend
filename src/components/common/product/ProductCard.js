@@ -49,13 +49,12 @@ const ProductCard = ({ product }) => {
                 <h5 className="card-title mt-2" style={{ height: 25 }}>{title}</h5>
                 <div className='row align-items-center mt-2'>
                     <div className='col'>
+                        <span className='h6 font-weight-bold'>₹ {product.price}</span>
+                    </div>
+                    <div className='col text-right'>
                         <span className='badge-success py-1 px-2'>
                             4.7 <i className='fa fa-star'></i>
                         </span>
-                    </div>
-                    <div className='col'>
-                        <span className='h5 mr-2 font-weight-normal'>MRP</span>
-                        <span className='h5 text-success font-weight-bold'>₹8,999</span>
                     </div>
                 </div>
                 <div className='row no-gutters mt-3'>
@@ -69,7 +68,7 @@ const ProductCard = ({ product }) => {
                     <div className='col pl-2'>
                         {/* <Link to='/buyer/cart'> */}
                         <button className='btn btn-primary w-100 py-1' onClick={addToCart}>
-                            Add to cart <i className='fa fa-shopping-cart'></i>
+                            Add to cart {/* <i className='fa fa-shopping-cart'></i> */}
                         </button>
                         {/* </Link> */}
                     </div>

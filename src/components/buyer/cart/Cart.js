@@ -37,8 +37,8 @@ const Cart = () => {
     return (
         <div>
             {/* <h3 className='text-secondary text-center'>Your cart is empty</h3> */}
-            <div className='row justify-content-between'>
-                <div className='col-8'>
+            <div className='row justify-content-between col-reverse-sm'>
+                <div className='col-12 col-md-8'>
                     <h4 className='mt-2 mb-3 text-center font-weight-bolder text-secondary'>
                         Cart Items ({cartItems.length})
                     </h4>
@@ -57,7 +57,7 @@ const Cart = () => {
                         </div>
                     </div>
                 </div>
-                <div className='col-4'>
+                <div className='col-12 col-md-4'>
                     <div className='row'>
                         <div className='col-12 mb-3'>
                             <AmountCard />
